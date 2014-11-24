@@ -10,25 +10,31 @@
             android:id="@+id/hello_message"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="Hello, today your friends are sharing"
+            android:text="@string/hello"
             />
-    <TextView
-            android:id="@+id/textViewMeal"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="Soup"
-            />
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">>
+        <TextView
+                android:id="@+id/textViewMeal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20px"
+                android:textStyle="bold"
+                android:text="Soup"/>
+        <Button
+                android:id="@+id/buttonBookMeal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:text="@string/book"
+                android:onClick="bookMeal"/>
+    </RelativeLayout>
+
     <TextView
             android:id="@+id/textStatusTV"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             />
-
-    <Button
-            android:id="@+id/buttonBookMeal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/book"
-            android:onClick="bookMeal"/>
 </LinearLayout>
 

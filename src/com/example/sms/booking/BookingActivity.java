@@ -1,4 +1,4 @@
-package com.example.sms;
+package com.example.sms.booking;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -8,8 +8,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import com.example.sms.confirmation.DisplayConfirmationActivity;
+import com.example.sms.R;
 
-public class MyActivity extends Activity {
+public class BookingActivity extends Activity {
 
     public final static String EXTRA_MESSAGE = "com.example.sms.MESSAGE";
     private Button bookMealButton;
@@ -17,6 +19,7 @@ public class MyActivity extends Activity {
     private String mealId;
     private ProgressBar webServicePG;
     static boolean errored = false;
+    private BookingCommand bookingCommand;
     TextView statusTV;
     TextView mealTW;
 
@@ -26,6 +29,7 @@ public class MyActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        bookingCommand = new BookingCommand();
 
         setContentView(R.layout.main);
     }
@@ -61,7 +65,7 @@ public class MyActivity extends Activity {
         @Override
         //Once WebService returns response
         protected void onPostExecute(Void result) {
-            Intent intent = new Intent(MyActivity.this, DisplayConfirmationActivity.class);
+            Intent intent = new Intent(BookingActivity.this, DisplayConfirmationActivity.class);
             TextView textView = (TextView) findViewById(R.id.hello_message);
             String message = textView.getText().toString();
             intent.putExtra(EXTRA_MESSAGE, message);
@@ -87,7 +91,7 @@ public class MyActivity extends Activity {
 
         @Override
         protected Void doInBackground(Object... objects) {
-            mealStatus = WebService.invokeBookMealWS(mealId,"bookMeal");
+            mealStatus = bookingCommand.bookMeal(mealId);
             return null;
         }
 

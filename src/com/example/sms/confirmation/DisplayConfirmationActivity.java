@@ -1,4 +1,4 @@
-package com.example.sms;
+package com.example.sms.confirmation;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -6,8 +6,9 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.TextView;
 import android.widget.Toast;
+import com.example.sms.R;
+import com.example.sms.booking.BookingActivity;
 
 /**
  * Created with IntelliJ IDEA.
@@ -25,7 +26,7 @@ public class DisplayConfirmationActivity extends Activity {
 
         // Get the message from the intent
         Intent intent = getIntent();
-        String message = intent.getStringExtra(MyActivity.EXTRA_MESSAGE);
+        String message = intent.getStringExtra(BookingActivity.EXTRA_MESSAGE);
 
         // Create the text view
 //        TextView textView = new TextView(this);
