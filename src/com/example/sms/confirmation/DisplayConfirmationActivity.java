@@ -10,13 +10,7 @@ import android.widget.Toast;
 import com.example.sms.R;
 import com.example.sms.booking.BookingActivity;
 
-/**
- * Created with IntelliJ IDEA.
- * User: cchiappini
- * Date: 26/10/2014
- * Time: 21:30
- * To change this template use File | Settings | File Templates.
- */
+
 public class DisplayConfirmationActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
