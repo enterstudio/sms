@@ -1,10 +1,7 @@
 package com.example.sms.booking;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.test.ActivityInstrumentationTestCase2;
-import android.test.suitebuilder.annotation.LargeTest;
-import android.test.suitebuilder.annotation.MediumTest;
 import android.test.suitebuilder.annotation.SmallTest;
 import android.view.View;
 import android.widget.Button;
@@ -20,8 +17,6 @@ public class BookingActivityTest extends ActivityInstrumentationTestCase2<Bookin
     private Activity mBookingActivity;
     private Button mBookingButton;
     private TextView mHelloTextView;
-    private Intent mConfirmationIntent;
-
 
     public BookingActivityTest() {
         super("com.example.sms", BookingActivity.class);
@@ -30,15 +25,9 @@ public class BookingActivityTest extends ActivityInstrumentationTestCase2<Bookin
     protected void setUp() throws Exception {
         super.setUp();
 
-
         mBookingActivity = getActivity();
         mBookingButton = (Button) mBookingActivity.findViewById(buttonBookMeal);
         mHelloTextView = (TextView) mBookingActivity.findViewById(hello_message);
-
-        mConfirmationIntent = new Intent(getInstrumentation()
-                .getTargetContext(), BookingActivity.class);
-
-
     }
 
     @SmallTest
