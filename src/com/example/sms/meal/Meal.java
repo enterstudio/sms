@@ -42,4 +42,8 @@ public class Meal {
     public String getLocation() {
         return location;
     }
+
+    public String getDescription() {
+        return description;
+    }
 }

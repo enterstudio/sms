@@ -1,21 +1,13 @@
 package com.example.sms.meal;
 
-import android.annotation.TargetApi;
-import android.app.Activity;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.support.v4.app.ListFragment;
-import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 
-import com.example.sms.R;
 import com.parse.FindCallback;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
@@ -30,37 +22,11 @@ import java.util.List;
 public class MealListFragment extends ListFragment {
     private static final String TAG = "MealListFragment";
     private List<Meal> mMealList = new ArrayList<Meal>();
+    static final int MEAL_BOOKED_REQUEST = 1;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        getActivity().setTitle(R.string.meals_title);
-        ParseQuery<ParseObject> query = ParseQuery.getQuery("Meal");
-        query.findInBackground(new FindCallback<ParseObject>() {
-
-            @Override
-            public void done(List<ParseObject> list, com.parse.ParseException e) {
-                if (e == null) {
-                    Log.d("MealListFragment", "no exception");
-                    for (int i = 0; i < list.size(); i++) {
-
-                        Object object = list.get(i);
-                        Log.d("ParseWebService", ((ParseObject) object).getString("description").toString());
-                        String description = ((ParseObject) object).getString("description").toString();
-                        String name = ((ParseObject) object).getString("name").toString();
-                        String id = ((ParseObject) object).getString("name").toString();
-                        String location = ((ParseObject) object).getString("location").toString();
-                        Meal meal = new Meal(id, name, description, location);
-                        mMealList.add(meal);
-                    }
-                } else {
-                    Log.e("MealListFragment", "exception " + e.getMessage());
-                }
-                ArrayAdapter<Meal> adapter = new ArrayAdapter<Meal>(getActivity(), android.R.layout.simple_expandable_list_item_1, mMealList);
-                setListAdapter(adapter);
-
-            }
-        });
     }
 
     @Override
@@ -69,8 +35,58 @@ public class MealListFragment extends ListFragment {
         Intent bookingIntent = new Intent(getActivity(), MealActivity.class);
         bookingIntent.putExtra(MealFragment.EXTRA_MEAL_ID, meal.getId());
         bookingIntent.putExtra(MealFragment.EXTRA_MEAL_LOCATION, meal.getLocation());
-        Log.d("MealListFragment", meal.getId());
-        startActivity(bookingIntent);
+        bookingIntent.putExtra(MealFragment.EXTRA_MEAL_DESCRIPTION, meal.getDescription());
+        startActivityForResult(bookingIntent, MEAL_BOOKED_REQUEST);
     }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        // Check which request we're responding to
+        if (requestCode == MEAL_BOOKED_REQUEST) {
+            if (data == null) {return;}
+            String id = data.getStringExtra("id");
+            for(Meal meal : mMealList){
+                if(meal.getId().equals(id)){
+                    mMealList.remove(meal);
+                    return;
+                }
+            }
+        }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        Log.d("MealListFragment", "onResume");
+        mMealList.clear();
+        ParseQuery<ParseObject> query = ParseQuery.getQuery("Meal");
+        query.findInBackground(new FindCallback<ParseObject>() {
+
+            @Override
+            public void done(List<ParseObject> list, com.parse.ParseException e) {
+                if (e == null) {
+                    for (int i = 0; i < list.size(); i++) {
+                        Object object = list.get(i);
+                        String description = ((ParseObject) object).getString("description").toString();
+                        String name = ((ParseObject) object).getString("name").toString();
+                        String id = ((ParseObject) object).getObjectId();
+                        String location = ((ParseObject) object).getString("location").toString();
+
+                        boolean booked = ((ParseObject) object).getBoolean("booked");
+                        if(!booked) {
+                            Meal meal = new Meal(id, name, description, location);
+                            mMealList.add(meal);
+                        }
+                    }
+                } else {
+                    Log.e(TAG, "exception " + e.getMessage());
+                }
+                ArrayAdapter<Meal> adapter = new ArrayAdapter<Meal>(getActivity(), android.R.layout.simple_expandable_list_item_1, mMealList);
+                setListAdapter(adapter);
+            }
+        });
+    }
+
+
 
 }

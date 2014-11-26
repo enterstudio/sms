@@ -7,4 +7,6 @@
     <string name="action_settings"></string>
     <string name="hello">Hello, today your friends are sharing</string>
     <string name="meals_title">meals</string>
+    <string name="meal_reserved">You have successfully reserved this meal!</string>
+    <string name="meal_unreserved">Unfortunately your meal was not reserved, please contact the owner</string>
 </resources>
