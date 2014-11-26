@@ -15,7 +15,31 @@ public class Meal {
         this.location = location;
     }
 
+    public Meal() {
+        this.id = null;
+        this.name = null;
+        this.description = null;
+        this.location = null;
+    }
+
     public boolean isBooked() {
         return booked;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    @Override
+    public String toString(){
+        return name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getLocation() {
+        return location;
     }
 }

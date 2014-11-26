@@ -16,7 +16,7 @@ public class DisplayConfirmationActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.display_confirmation);
-        getActionBar().setDisplayHomeAsUpEnabled(true);
+
 
         // Get the message from the intent
         Intent intent = getIntent();

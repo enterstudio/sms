@@ -1,6 +1,7 @@
 package com.example.sms.booking;
 
 import android.net.ParseException;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.example.sms.meal.Meal;
@@ -19,8 +20,8 @@ import java.util.Map;
 public class ParseWebService {
     private static final List<Meal> meals = new ArrayList<Meal>();
 
-
     public static List<Meal> getMeals() {
+
         ParseQuery<ParseObject> query = ParseQuery.getQuery("Meal");
         query.findInBackground(new FindCallback<ParseObject>() {
 
@@ -30,6 +31,7 @@ public class ParseWebService {
                     for (int i = 0; i < list.size(); i++) {
 
                         Object object = list.get(i);
+                        Log.d("ParseWebService", ((ParseObject) object).getString("description").toString());
                         String description = ((ParseObject) object).getString("description").toString();
                         String name = ((ParseObject) object).getString("name").toString();
                         String id = ((ParseObject) object).getString("name").toString();
@@ -40,10 +42,13 @@ public class ParseWebService {
                 } else {
                     //error
                 }
+
+
             }
         });
-
+        Log.d("ParseWebService", "meals are "+meals.size());
     return meals;
 
     }
+
 }

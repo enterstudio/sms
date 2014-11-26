@@ -6,9 +6,6 @@ public class MealId {
     public MealId(String mealId) {
         this.mealId = Integer.parseInt(mealId);
     }
-    public int getMealId() {
-        return mealId;
-    }
 
     @Override
     public boolean equals(Object o) {

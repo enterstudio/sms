@@ -6,8 +6,10 @@
     <uses-sdk android:minSdkVersion="11" android:targetSdkVersion="19"/>
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <application android:label="@string/app_name" android:icon="@drawable/ic_launcher">
-        <activity android:name=".booking.BookingActivity"
+    <application android:label="@string/app_name"
+        android:icon="@drawable/ic_launcher"
+        android:name=".ShareMyMealApplication">
+        <activity android:name="com.example.sms.meal.MealListActivity"
                   android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -15,9 +17,9 @@
             </intent-filter>
         </activity>
         <activity
-                android:name=".confirmation.DisplayConfirmationActivity"
+                android:name=".meal.MealActivity"
                 android:label="@string/title_activity_display_confirmation"
-                android:parentActivityName="com.example.sms.booking.BookingActivity"
+                android:parentActivityName=".meal.MealListActivity"
                 android:id="@+id/action_settings">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
