@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
     android:weightSum="1">
 
@@ -15,40 +20,72 @@
         android:scaleType="fitCenter" />
 
     <TextView
-        android:id="@+id/meal_description_introduction"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:text="What is it all about?"
-        android:textAlignment="center" />
-
-    <TextView
         android:id="@+id/meal_description"
         android:layout_width="389dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
         android:textAlignment="center" />
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="1">
 
     <TextView
         android:id="@+id/confirmation_message"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="You can collect this meal at"
-        android:textAlignment="center" />
+        android:text="At"
+        android:textAlignment="center"
+        android:paddingRight="2px" />
 
     <TextView
         android:id="@+id/meal_location_message"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal" />
 
-    <Button
-        android:id="@+id/buttonBookMeal"
+    </LinearLayout>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="1">
+
+    <TextView
+        android:id="@+id/uploaded_info"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
         android:layout_gravity="center_horizontal"
-        android:onClick="bookMeal"
-        android:text="@string/book" />
+        android:text="Uploaded by"
+        android:textAlignment="center"
+        android:paddingRight="2px" />
+
+    <TextView
+        android:id="@+id/uploaded_by"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal" />
+
+    </LinearLayout>
 </LinearLayout>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom"
+        android:orientation="horizontal"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp" >
+
+    <Button
+        android:id="@+id/buttonBookMeal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="bookMeal"
+        android:text="@string/book"
+        android:layout_gravity="center_horizontal" />
+    </LinearLayout>
+    </RelativeLayout>

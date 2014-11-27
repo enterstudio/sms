@@ -36,6 +36,7 @@ public class MealListFragment extends ListFragment {
         bookingIntent.putExtra(MealFragment.EXTRA_MEAL_ID, meal.getId());
         bookingIntent.putExtra(MealFragment.EXTRA_MEAL_LOCATION, meal.getLocation());
         bookingIntent.putExtra(MealFragment.EXTRA_MEAL_DESCRIPTION, meal.getDescription());
+        bookingIntent.putExtra(MealFragment.EXTRA_MEAL_UPLOADED_BY, meal.getOwner());
         startActivityForResult(bookingIntent, MEAL_BOOKED_REQUEST);
     }
 
@@ -71,10 +72,11 @@ public class MealListFragment extends ListFragment {
                         String name = ((ParseObject) object).getString("name").toString();
                         String id = ((ParseObject) object).getObjectId();
                         String location = ((ParseObject) object).getString("location").toString();
+                        String owner = ((ParseObject) object).getString("owner").toString();
 
                         boolean booked = ((ParseObject) object).getBoolean("booked");
                         if(!booked) {
-                            Meal meal = new Meal(id, name, description, location);
+                            Meal meal = new Meal(id, name, description, location, owner);
                             mMealList.add(meal);
                         }
                     }

@@ -5,6 +5,7 @@ public class Meal {
     private final String name;
     private final String description;
     private final String location;
+    private final String owner;
     private boolean booked;
 
     public Meal(String id, String name, String description, String location) {
@@ -13,13 +14,15 @@ public class Meal {
         this.name = name;
         this.description = description;
         this.location = location;
+        this.owner = null;
     }
 
-    public Meal() {
-        this.id = null;
-        this.name = null;
-        this.description = null;
-        this.location = null;
+    public Meal(String id, String name, String description, String location, String owner) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.location = location;
+        this.owner = owner;
     }
 
     public boolean isBooked() {
@@ -45,5 +48,9 @@ public class Meal {
 
     public String getDescription() {
         return description;
+    }
+
+    public String getOwner() {
+        return owner;
     }
 }

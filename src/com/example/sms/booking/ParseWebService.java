@@ -36,7 +36,8 @@ public class ParseWebService {
                         String name = ((ParseObject) object).getString("name").toString();
                         String id = ((ParseObject) object).getString("name").toString();
                         String location = ((ParseObject) object).getString("location").toString();
-                        Meal meal = new Meal(id, name, description, location);
+                        String owner = ((ParseObject) object).getString("owner").toString();
+                        Meal meal = new Meal(id, name, description, location, owner);
                         meals.add(meal);
                     }
                 } else {

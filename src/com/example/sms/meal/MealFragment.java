@@ -27,9 +27,11 @@ public class MealFragment extends Fragment {
     public static final String EXTRA_MEAL_ID = "com.example.sms.mealintent.meal_id";
     public static final String EXTRA_MEAL_LOCATION = "com.example.sms.mealintent.meal_location";
     public static final String EXTRA_MEAL_DESCRIPTION = "com.example.sms.mealintent.meal_description";
+    public static final String EXTRA_MEAL_UPLOADED_BY = "com.example.sms.mealintent.uploaded_by";
     private String mealLocation;
     private String mealId;
     private String mealDescription;
+    private String uploadedBy;
 
 
     @Override
@@ -39,6 +41,7 @@ public class MealFragment extends Fragment {
         mealId = getActivity().getIntent().getStringExtra(EXTRA_MEAL_ID);
         mealLocation = getActivity().getIntent().getStringExtra(EXTRA_MEAL_LOCATION);
         mealDescription = getActivity().getIntent().getStringExtra(EXTRA_MEAL_DESCRIPTION);
+        uploadedBy = getActivity().getIntent().getStringExtra(EXTRA_MEAL_UPLOADED_BY);
     }
 
     @Override
@@ -64,6 +67,8 @@ public class MealFragment extends Fragment {
                             // Complete location text
                             TextView locationTextView = (TextView) v.findViewById(R.id.meal_location_message);
                             locationTextView.setText(mealLocation);
+                            TextView uploadedByTextView = (TextView) v.findViewById(R.id.uploaded_by);
+                            uploadedByTextView.setText(uploadedBy);
                             Button bookMealButton = (Button) v.findViewById(R.id.buttonBookMeal);
                             bookMealButton.setOnClickListener(new View.OnClickListener() {
                                 public void onClick(View v) {
