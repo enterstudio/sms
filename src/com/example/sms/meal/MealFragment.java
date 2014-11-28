@@ -2,7 +2,6 @@ package com.example.sms.meal;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.net.ParseException;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -10,12 +9,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.sms.R;
-import com.example.sms.booking.BookingActivity;
 import com.parse.GetCallback;
 import com.parse.GetDataCallback;
 import com.parse.ParseFile;
@@ -65,11 +62,20 @@ public class MealFragment extends Fragment {
                             TextView descriptionTextView = (TextView) v.findViewById(R.id.meal_description);
                             descriptionTextView.setText(mealDescription);
                             // Complete location text
+                            TextView confirmationMessageView = (TextView) v.findViewById(R.id.confirmation_message);
+                            confirmationMessageView.setText("Location is");
+
                             TextView locationTextView = (TextView) v.findViewById(R.id.meal_location_message);
                             locationTextView.setText(mealLocation);
+
+                            TextView uploadedByStringTextView = (TextView) v.findViewById(R.id.uploaded_info);
+                            uploadedByStringTextView.setText("Cooked by");
+
                             TextView uploadedByTextView = (TextView) v.findViewById(R.id.uploaded_by);
                             uploadedByTextView.setText(uploadedBy);
+
                             Button bookMealButton = (Button) v.findViewById(R.id.buttonBookMeal);
+                            bookMealButton.setVisibility(View.VISIBLE);
                             bookMealButton.setOnClickListener(new View.OnClickListener() {
                                 public void onClick(View v) {
 
