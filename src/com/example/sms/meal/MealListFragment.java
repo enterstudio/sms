@@ -1,13 +1,17 @@
 package com.example.sms.meal;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v4.app.ListFragment;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
+import com.example.sms.R;
 import com.parse.FindCallback;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
@@ -31,7 +35,7 @@ public class MealListFragment extends ListFragment {
 
     @Override
     public void onListItemClick(ListView listView, View v, int position, long id) {
-        Meal meal = (Meal) (getListAdapter()).getItem(position);
+        Meal meal = ((MealAdapter) getListAdapter()).getItem(position);
         Intent bookingIntent = new Intent(getActivity(), MealActivity.class);
         bookingIntent.putExtra(MealFragment.EXTRA_MEAL_ID, meal.getId());
         bookingIntent.putExtra(MealFragment.EXTRA_MEAL_LOCATION, meal.getLocation());
@@ -83,12 +87,34 @@ public class MealListFragment extends ListFragment {
                 } else {
                     Log.e(TAG, "exception " + e.getMessage());
                 }
-                ArrayAdapter<Meal> adapter = new ArrayAdapter<Meal>(getActivity(), android.R.layout.simple_expandable_list_item_1, mMealList);
+                MealAdapter adapter = new MealAdapter(mMealList);
                 setListAdapter(adapter);
             }
         });
+
+
     }
 
+    private class MealAdapter extends ArrayAdapter<Meal> {
 
+        public MealAdapter(List<Meal> meals) {
+            super(getActivity(), 0, meals);
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            if(convertView == null) {
+                convertView = getActivity().getLayoutInflater().inflate(R.layout.list_meal, null);
+            }
+            Meal meal = getItem(position);
+
+            TextView titleTextView = (TextView) convertView.findViewById(R.id.meal_list_item_titleTextView);
+            titleTextView.setText(meal.getName());
+
+            TextView ownerTextView = (TextView) convertView.findViewById(R.id.meal_list_item_ownerTextView);
+            ownerTextView.setText("by "+meal.getOwner());
+            return convertView;
+        }
+    }
 
 }
