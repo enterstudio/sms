@@ -1,3 +1,13 @@
+build
+bin
+gen
+local.properties
+/*/build.xml
+/*/tests/build.xml
+.settings
+proguard
+.gradle
+/.metadata/
 .DS_Store
 .idea
 *.iml
