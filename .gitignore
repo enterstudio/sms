@@ -13,3 +13,4 @@ proguard
 *.iml
 out
 ant.properties
+*.html
