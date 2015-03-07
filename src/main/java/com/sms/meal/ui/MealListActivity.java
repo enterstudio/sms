@@ -1,7 +1,8 @@
-package com.sms.meal;
+package com.sms.meal.ui;
 
 import android.support.v4.app.Fragment;
-import android.util.Log;
+
+import com.sms.ui.SingleFragmentActivity;
 
 /**
  * Created by cchiappini on 25/11/2014.

@@ -1,4 +1,4 @@
-package com.sms.meal;
+package com.sms.ui;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -19,7 +19,6 @@ public abstract class SingleFragmentActivity extends FragmentActivity{
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.fragment_meal);
-        Log.d("SingleFrameActivity", "singleFrameActivity");
         FragmentManager fm = getSupportFragmentManager();
         Fragment fragment = fm.findFragmentById(R.id.fragmentContainer);
         if(fragment == null) {

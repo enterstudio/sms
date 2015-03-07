@@ -1,4 +1,4 @@
-package com.sms.booking;
+package com.sms.booking.ui;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -6,11 +6,9 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 
 import com.sms.R;
-import com.sms.meal.MealFragment;
+import com.sms.meal.ui.MealFragment;
 
 public class BookingActivity extends FragmentActivity {
-
-    public final static String EXTRA_MESSAGE = "com.sms.MESSAGE";
 
     /**
      * Called when the activity is first created.

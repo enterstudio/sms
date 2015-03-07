@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import com.sms.R;
+import com.sms.booking.ui.BookingActivity;
 
 import static com.sms.R.id.buttonBookMeal;
 import static com.sms.R.id.hello_message;

@@ -1,9 +1,8 @@
-package com.sms.meal;
+package com.sms.meal.ui;
 
 import android.content.Intent;
 import android.support.v4.app.ListFragment;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -11,9 +10,11 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.sms.R;
-import com.parse.FindCallback;
-import com.parse.ParseObject;
-import com.parse.ParseQuery;
+import com.sms.meal.backend.MealProvider;
+import com.sms.meal.backend.MyMealProvider;
+import com.sms.meal.backend.ParseMealParser;
+import com.sms.meal.domain.Meal;
+import com.sms.transport.RequestCallback;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +27,7 @@ public class MealListFragment extends ListFragment {
     private static final String TAG = "MealListFragment";
     private List<Meal> mMealList = new ArrayList<Meal>();
     static final int MEAL_BOOKED_REQUEST = 1;
+    private MealProvider mealProvider = new MyMealProvider(new ParseMealParser());
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -36,10 +38,7 @@ public class MealListFragment extends ListFragment {
     public void onListItemClick(ListView listView, View v, int position, long id) {
         Meal meal = ((MealAdapter) getListAdapter()).getItem(position);
         Intent bookingIntent = new Intent(getActivity(), MealActivity.class);
-        bookingIntent.putExtra(MealFragment.EXTRA_MEAL_ID, meal.getId());
-        bookingIntent.putExtra(MealFragment.EXTRA_MEAL_LOCATION, meal.getLocation());
-        bookingIntent.putExtra(MealFragment.EXTRA_MEAL_DESCRIPTION, meal.getDescription());
-        bookingIntent.putExtra(MealFragment.EXTRA_MEAL_UPLOADED_BY, meal.getOwner());
+        bookingIntent.putExtra("meal", meal);
         startActivityForResult(bookingIntent, MEAL_BOOKED_REQUEST);
     }
 
@@ -61,37 +60,8 @@ public class MealListFragment extends ListFragment {
     @Override
     public void onResume() {
         super.onResume();
-        Log.d("MealListFragment", "onResume");
         mMealList.clear();
-        ParseQuery<ParseObject> query = ParseQuery.getQuery("Meal");
-        query.findInBackground(new FindCallback<ParseObject>() {
-
-            @Override
-            public void done(List<ParseObject> list, com.parse.ParseException e) {
-                if (e == null) {
-                    for (int i = 0; i < list.size(); i++) {
-                        Object object = list.get(i);
-                        String description = ((ParseObject) object).getString("description").toString();
-                        String name = ((ParseObject) object).getString("name").toString();
-                        String id = ((ParseObject) object).getObjectId();
-                        String location = ((ParseObject) object).getString("location").toString();
-                        String owner = ((ParseObject) object).getString("owner").toString();
-
-                        boolean booked = ((ParseObject) object).getBoolean("booked");
-                        if(!booked) {
-                            Meal meal = new Meal(id, name, description, location, owner);
-                            mMealList.add(meal);
-                        }
-                    }
-                } else {
-                    Log.e(TAG, "exception " + e.getMessage());
-                }
-                MealAdapter adapter = new MealAdapter(mMealList);
-                setListAdapter(adapter);
-            }
-        });
-
-
+        mealProvider.getMealsFromServer(new MealsCallback());
     }
 
     private class MealAdapter extends ArrayAdapter<Meal> {
@@ -102,6 +72,9 @@ public class MealListFragment extends ListFragment {
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
+            //if (closeToEnd(position && !mLoading)){
+            //loadMoreData();
+            //}
             if(convertView == null) {
                 convertView = getActivity().getLayoutInflater().inflate(R.layout.list_meal, null);
             }
@@ -114,6 +87,25 @@ public class MealListFragment extends ListFragment {
             ownerTextView.setText("by "+meal.getOwner());
             return convertView;
         }
+    }
+
+    protected class MealsCallback implements RequestCallback<List<Meal>> {
+
+        @Override
+        public void onRetrieved(List<Meal> data) {
+
+            showContent(data);
+        }
+    }
+
+    private void showContent(List<Meal> data) {
+        //PROGRESS SET VISIBILITY GONE?
+        MealAdapter adapter = new MealAdapter(data);
+        setListAdapter(adapter);
+    }
+
+    private void showProgress() {
+        //PROGRESS SET VISIBILITY VISIBLE?
     }
 
 }

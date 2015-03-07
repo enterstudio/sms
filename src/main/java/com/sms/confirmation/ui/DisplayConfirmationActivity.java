@@ -1,14 +1,12 @@
-package com.sms.confirmation;
+package com.sms.confirmation.ui;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Toast;
 import com.sms.R;
-import com.sms.booking.BookingActivity;
 
 
 public class DisplayConfirmationActivity extends Activity {

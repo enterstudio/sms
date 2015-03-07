@@ -3,6 +3,8 @@ package com.sms.booking;
 import android.app.Activity;
 import android.test.ActivityInstrumentationTestCase2;
 
+import com.sms.booking.ui.BookingActivity;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

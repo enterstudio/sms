@@ -6,7 +6,8 @@ import android.test.ActivityUnitTestCase;
 import android.test.suitebuilder.annotation.MediumTest;
 import android.widget.Button;
 import android.widget.TextView;
-import com.sms.confirmation.DisplayConfirmationActivity;
+
+import com.sms.booking.ui.BookingActivity;
 
 import static com.sms.R.id.buttonBookMeal;
 import static com.sms.R.id.hello_message;

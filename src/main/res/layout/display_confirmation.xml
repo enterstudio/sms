@@ -15,6 +15,5 @@ android:layout_height="match_parent">
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:text="@string/book"
-        android:onClick="bookMeal"/>
+        android:text="@string/book"/>
 </LinearLayout>
