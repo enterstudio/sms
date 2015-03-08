@@ -1,12 +1,15 @@
 package com.sms.meal.ui;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.BitmapFactory;
 import android.support.v4.app.ListFragment;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -30,8 +33,9 @@ import javax.inject.Inject;
 public class MealListFragment extends ListFragment {
     @Inject
     MyMealProvider mealProvider;
-    private List<MyMeal> mMealList = new ArrayList<MyMeal>();
     static final int MEAL_BOOKED_REQUEST = 1;
+
+    private List<MyMeal> mMealList = new ArrayList<MyMeal>();
     private ShareMyMealApplication app;
 
     @Override
@@ -98,6 +102,9 @@ public class MealListFragment extends ListFragment {
 
             TextView ownerTextView = (TextView) convertView.findViewById(R.id.meal_list_item_ownerTextView);
             ownerTextView.setText("by "+meal.getOwner());
+
+            ImageView imageView =(ImageView) convertView.findViewById(R.id.imageView);
+            imageView.setImageBitmap(BitmapFactory.decodeByteArray(meal.getImage(), 0, meal.getImage().length) );
             return convertView;
         }
     }
