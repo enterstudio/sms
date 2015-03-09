@@ -1,6 +1,5 @@
 package com.sms.meal.ui;
 
-import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
@@ -15,9 +14,7 @@ import android.widget.TextView;
 
 import com.sms.R;
 import com.sms.ShareMyMealApplication;
-import com.sms.meal.backend.MealProvider;
 import com.sms.meal.backend.MyMealProvider;
-import com.sms.meal.domain.Meal;
 import com.sms.meal.domainmeal.MyMeal;
 import com.sms.transport.RequestCallback;
 

@@ -21,7 +21,7 @@ android {
         targetSdkVersion 18
         versionCode 2
         versionName "1.0.0-SNAPSHOT"
-        applicationId "com.example"
+        applicationId "com.sms"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
@@ -65,7 +65,7 @@ dependencies {
     compile project(':apiclient')
     compile files('libs/Parse-1.7.1.jar')
     compile files('libs/bolts-android-1.1.3.jar')
-    compile 'com.android.support:support-v4:21.0.3'
     compile 'com.android.support:appcompat-v7:21.0.0'
     compile 'com.android.support:cardview-v7:21.0.0'
+    compile 'com.android.support:support-v13:21.0.3'
 }

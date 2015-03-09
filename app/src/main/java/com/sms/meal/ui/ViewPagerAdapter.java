@@ -1,10 +1,8 @@
-package com.sms.ui;
+package com.sms.meal.ui;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
-
-import com.sms.meal.ui.MealListFragment;
 
 public class ViewPagerAdapter extends FragmentStatePagerAdapter {
 
@@ -27,10 +25,9 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
         }
         else
         {
-            MealListFragment mealListFragment = new MealListFragment();
-            return mealListFragment;
+            ShareMealFragment shareMealFragment = new ShareMealFragment();
+            return shareMealFragment;
         }
-
 
     }
 

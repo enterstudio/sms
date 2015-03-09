@@ -5,7 +5,7 @@ import android.support.v4.view.ViewPager;
 
 import com.sms.R;
 import com.sms.ui.SlidingTabLayout;
-import com.sms.ui.ViewPagerAdapter;
+
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
@@ -22,7 +22,6 @@ public class MainActivity extends ActionBarActivity {
     private ViewPagerAdapter adapter;
     private SlidingTabLayout tabs;
     private final CharSequence titles[]={"Book","Share"};
-    private int numberOfTabs =2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,10 +32,11 @@ public class MainActivity extends ActionBarActivity {
         // Creating The Toolbar and setting it as the Toolbar for the activity
 
         toolbar = (Toolbar) findViewById(R.id.tool_bar);
+        toolbar.setTitle("");
         setSupportActionBar(toolbar);
 
 
-        // Creating The ViewPagerAdapter and Passing Fragment Manager, titles fot the Tabs and Number Of Tabs.
+        // Creating The ViewPagerAdapter and Passing Fragment Manager, titles fot the Tabs.
         adapter =  new ViewPagerAdapter(getSupportFragmentManager(), titles);
 
         // Assigning ViewPager View and setting the adapter
@@ -57,8 +57,6 @@ public class MainActivity extends ActionBarActivity {
 
         // Setting the ViewPager For the SlidingTabsLayout
         tabs.setViewPager(pager);
-
-
 
     }
 
