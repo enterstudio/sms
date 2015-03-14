@@ -11,6 +11,7 @@
     android:background="@color/white">
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:orientation="vertical"
+        android:padding="8dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -19,24 +20,20 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
-            android:padding="15dp"
             android:scaleType="fitCenter" />
 
         <TextView android:id="@+id/meal_list_item_titleTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textStyle="bold"
-            android:paddingLeft="4dp"
-            android:paddingRight="4dp"
+            android:paddingBottom="0dp"
             style="@style/MainBlackItem" />
 
         <TextView android:id="@+id/meal_list_item_ownerTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/meal_list_item_titleTextView"
-            android:paddingLeft="4dp"
-            android:paddingRight="4dp"
-            android:paddingTop="4dp"
+            android:paddingTop="0dp"
             style="@style/GreyItem"
             android:textSize="10dp" />
 
