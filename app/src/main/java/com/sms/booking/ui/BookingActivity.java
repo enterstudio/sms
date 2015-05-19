@@ -4,11 +4,14 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
+import android.support.v7.app.ActionBarActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.View;
 
 import com.sms.R;
 import com.sms.meal.ui.MealFragment;
 
-public class BookingActivity extends FragmentActivity {
+public class BookingActivity extends ActionBarActivity {
 
     /**
      * Called when the activity is first created.

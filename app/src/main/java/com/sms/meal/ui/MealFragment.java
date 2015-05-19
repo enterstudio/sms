@@ -101,9 +101,9 @@ public class MealFragment extends Fragment {
         @Override
         public void onRetrieved(MyMeal data) {
             descriptionTextView.setText(data.getDescription());
-            confirmationMessageView.setText("Location is");
+            confirmationMessageView.setText("Location ");
             locationTextView.setText(data.getLocation());
-            uploadedByStringTextView.setText("Cooked by");
+            uploadedByStringTextView.setText("Cooked by ");
             uploadedByTextView.setText(data.getOwner());
             imageView.setImageBitmap(BitmapFactory.decodeByteArray(data.getImage(), 0, data.getImage().length) );
             bookMealButton.setVisibility(View.VISIBLE);

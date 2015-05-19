@@ -55,8 +55,12 @@ public class MainActivity extends ActionBarActivity {
             }
         });
 
+        toolbar = (Toolbar) findViewById(R.id.tool_bar);
+        toolbar.setTitle("Share my meal");
+        setSupportActionBar(toolbar);
+
         // Setting the ViewPager For the SlidingTabsLayout
-        tabs.setViewPager(pager);
+        //tabs.setViewPager(pager);
 
     }
 

@@ -10,4 +10,5 @@
     <string name="meal_reserved">You have successfully reserved this meal!</string>
     <string name="meal_unreserved">Unfortunately your meal was not reserved, please contact the owner</string>
     <string name="meal_not_found">Unfortunately the meal cannot be found.</string>
+    <string name="ingredients">Ingredients</string>
 </resources>

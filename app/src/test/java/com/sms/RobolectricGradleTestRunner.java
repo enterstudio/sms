@@ -1,4 +1,4 @@
-package com.sms.booking;
+package com.sms;
 
 
 import org.junit.runners.model.InitializationError;

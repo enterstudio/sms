@@ -8,9 +8,6 @@ import com.sms.meal.domainmeal.MyMeal;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by cchiappini on 05/03/2015.
- */
 public class ParseMealParser implements MealParser<ParseObject> {
 
     public List<MyMeal> extractUnbookedMealsFromListOfObject(List<ParseObject> list) {

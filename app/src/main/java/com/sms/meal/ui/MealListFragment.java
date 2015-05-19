@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.sms.R;
 import com.sms.ShareMyMealApplication;
+import com.sms.booking.ui.BookingActivity;
 import com.sms.meal.backend.MyMealProvider;
 import com.sms.meal.domainmeal.MyMeal;
 import com.sms.transport.RequestCallback;

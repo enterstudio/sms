@@ -3,73 +3,145 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
-
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:background="@color/white"
     android:orientation="vertical"
-    android:weightSum="1">
+    android:padding="15dp"
+    android:textColor="@color/black">
 
-    <ImageView
-        android:id="@+id/imageView"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:adjustViewBounds="true"
-        android:padding="15dp"
-        android:scaleType="fitCenter" />
-
-    <TextView
-        android:id="@+id/meal_description"
-        android:layout_width="389dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:textAlignment="center" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:weightSum="1">
 
-    <TextView
-        android:id="@+id/confirmation_message"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:textAlignment="center"
-        android:paddingRight="2px" />
+        <include
+            android:id="@+id/meal_toolbar"
+            layout="@layout/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
-    <TextView
-        android:id="@+id/meal_location_message"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal" />
 
-    </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="1">
 
-    <TextView
-        android:id="@+id/uploaded_info"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:textAlignment="center"
-        android:paddingRight="2px" />
+        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/meal_toolbar"
+            android:id="@+id/layoutCaptionTitleView">
 
-    <TextView
-        android:id="@+id/uploaded_by"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal" />
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/abc_text_size_body_1_material"
+                android:adjustViewBounds="true"
+                android:scaleType="fitCenter"
+                />
 
-    </LinearLayout>
-</LinearLayout>
+            <TextView
+                android:id="@+id/captionTitleView"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Test"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="@color/white"
+                />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/layoutCaptionTitleView"
+            android:layout_margin="@dimen/abc_text_size_body_1_material"
+            android:orientation="horizontal"
+            android:weightSum="1"
+            android:id="@+id/uploaded_layout">
+
+            <TextView
+                android:id="@+id/uploaded_info"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:textAlignment="center"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/uploaded_by"
+                style="@style/SecondaryTextItem"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/abc_text_size_body_1_material"
+            android:layout_marginLeft="@dimen/abc_text_size_body_1_material"
+            android:layout_marginRight="@dimen/abc_text_size_body_1_material"
+            android:layout_marginTop="0dp"
+            android:orientation="horizontal"
+            android:weightSum="1"
+            android:layout_below="@id/uploaded_layout"
+            android:id="@+id/confirmation_layout">
+
+            <TextView
+                android:id="@+id/confirmation_message"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:textAlignment="center"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/meal_location_message"
+                style="@style/SecondaryTextItem"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal" />
+
+        </LinearLayout>
+
+        <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/card_view"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_gravity="center"
+            android:background="@color/white"
+            card_view:cardCornerRadius="4dp"
+            android:layout_below="@id/confirmation_layout">
+
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/abc_text_size_body_1_material"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@android:style/TextAppearance.Medium"
+                    android:layout_width="389dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="@string/ingredients"
+                    android:textAlignment="center"
+                    android:textColor="@color/ColorPrimary" />
+
+                <TextView
+                    android:id="@+id/meal_description"
+                    android:layout_width="389dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:textAlignment="center"
+                    android:textColor="@color/black" />
+
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+
+    </RelativeLayout>
+
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
@@ -77,14 +149,14 @@
         android:layout_gravity="bottom"
         android:orientation="horizontal"
         android:paddingLeft="20dp"
-        android:paddingRight="20dp" >
+        android:paddingRight="20dp">
 
-    <Button
-        android:id="@+id/buttonBookMeal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/book"
-        android:layout_gravity="center_horizontal"
-        android:visibility="gone"/>
+        <Button
+            android:id="@+id/buttonBookMeal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/book"
+            android:visibility="gone" />
     </LinearLayout>
-    </RelativeLayout>
+</RelativeLayout>
