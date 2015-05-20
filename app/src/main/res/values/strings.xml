@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Share my meal</string>
-    <string name="book">I want this</string>
+    <string name="book">Get this meal</string>
     <string name="title_activity_display_confirmation">Get your meal</string>
     <string name="action_search">Search</string>
     <string name="action_settings"></string>

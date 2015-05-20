@@ -23,10 +23,9 @@
             android:scaleType="fitCenter" />
 
         <TextView android:id="@+id/meal_list_item_titleTextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:textStyle="bold"
             android:paddingBottom="0dp"
+            android:gravity="center_horizontal"
             style="@style/MainBlackItem" />
 
         <TextView android:id="@+id/meal_list_item_ownerTextView"

@@ -19,7 +19,6 @@ import com.parse.GetCallback;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.sms.ShareMyMealApplication;
-import com.sms.meal.backend.MealProvider;
 import com.sms.meal.backend.MyMealProvider;
 import com.sms.meal.domainmeal.MyMeal;
 import com.sms.transport.RequestCallback;
@@ -38,6 +37,7 @@ public class MealFragment extends Fragment {
     private ImageView imageView;
     private String mealFromIntentId;
     private ShareMyMealApplication app;
+    private TextView captionTitleView;
 
     @Override
     public void onAttach(Activity activity) {
@@ -62,6 +62,7 @@ public class MealFragment extends Fragment {
         uploadedByTextView = (TextView) v.findViewById(R.id.uploaded_by);
         imageView =  (ImageView)v.findViewById(R.id.imageView);
         bookMealButton = (Button) v.findViewById(R.id.buttonBookMeal);
+        captionTitleView = (TextView) v.findViewById(R.id.captionTitleView);
         bookMealButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
@@ -107,6 +108,7 @@ public class MealFragment extends Fragment {
             uploadedByTextView.setText(data.getOwner());
             imageView.setImageBitmap(BitmapFactory.decodeByteArray(data.getImage(), 0, data.getImage().length) );
             bookMealButton.setVisibility(View.VISIBLE);
+            captionTitleView.setText(data.getName());
         }
 
         @Override

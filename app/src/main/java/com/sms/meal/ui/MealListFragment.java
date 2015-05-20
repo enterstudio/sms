@@ -99,7 +99,7 @@ public class MealListFragment extends ListFragment {
             titleTextView.setText(meal.getName());
 
             TextView ownerTextView = (TextView) convertView.findViewById(R.id.meal_list_item_ownerTextView);
-            ownerTextView.setText("by "+meal.getOwner());
+            ownerTextView.setText("from "+meal.getOwner());
 
             ImageView imageView =(ImageView) convertView.findViewById(R.id.imageView);
             imageView.setImageBitmap(BitmapFactory.decodeByteArray(meal.getImage(), 0, meal.getImage().length) );

@@ -4,45 +4,39 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    android:orientation="vertical"
-    android:padding="15dp"
-    android:textColor="@color/black">
+    android:orientation="vertical">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:weightSum="1">
 
-        <include
-            android:id="@+id/meal_toolbar"
-            layout="@layout/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-
-
 
         <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/meal_toolbar"
             android:id="@+id/layoutCaptionTitleView">
 
             <ImageView
                 android:id="@+id/imageView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/abc_text_size_body_1_material"
                 android:adjustViewBounds="true"
                 android:scaleType="fitCenter"
                 />
 
+            <View
+                android:layout_width="fill_parent"
+                android:layout_alignBottom="@id/imageView"
+                android:layout_height="30dp"
+                android:background="#80FF5722" />
+
             <TextView
                 android:id="@+id/captionTitleView"
-                android:layout_width="fill_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Test"
+                android:layout_alignBottom="@id/imageView"
+                android:layout_centerHorizontal="true"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@color/white"
                 />
@@ -56,7 +50,8 @@
             android:layout_margin="@dimen/abc_text_size_body_1_material"
             android:orientation="horizontal"
             android:weightSum="1"
-            android:id="@+id/uploaded_layout">
+            android:id="@+id/uploaded_layout"
+            >
 
             <TextView
                 android:id="@+id/uploaded_info"
@@ -64,11 +59,11 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:textAlignment="center"
-                android:textColor="@color/black" />
+                style="@style/SecondaryBlackTextItem"/>
 
             <TextView
                 android:id="@+id/uploaded_by"
-                style="@style/SecondaryTextItem"
+                style="@style/SecondaryGreyTextItem"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal" />
@@ -93,11 +88,11 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:textAlignment="center"
-                android:textColor="@color/black" />
+                style="@style/SecondaryBlackTextItem" />
 
             <TextView
                 android:id="@+id/meal_location_message"
-                style="@style/SecondaryTextItem"
+                style="@style/SecondaryGreyTextItem"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal" />
@@ -108,16 +103,17 @@
             xmlns:card_view="http://schemas.android.com/apk/res-auto"
             android:id="@+id/card_view"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:background="@color/white"
             card_view:cardCornerRadius="4dp"
+            android:layout_margin="16dp"
             android:layout_below="@id/confirmation_layout">
 
             <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/abc_text_size_body_1_material"
+                android:layout_margin="@dimen/abc_text_size_body_1_material"
                 android:orientation="vertical">
 
                 <TextView
@@ -135,7 +131,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:textAlignment="center"
-                    android:textColor="@color/black" />
+                    style="@style/SecondaryBlackTextItem" />
 
             </LinearLayout>
         </android.support.v7.widget.CardView>
@@ -156,6 +152,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
+            android:background="@color/ColorPrimary"
             android:text="@string/book"
             android:visibility="gone" />
     </LinearLayout>

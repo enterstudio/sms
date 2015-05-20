@@ -1,5 +1,7 @@
 package com.sms.meal.ui;
 
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -27,17 +29,20 @@ public class MealActivity extends ActionBarActivity {
             fm.beginTransaction().add(R.id.fragmentContainer, fragment).commit();
         }
 
-
         toolbar = (Toolbar) findViewById(R.id.meal_toolbar);
         toolbar.setTitle("");
 
         if (toolbar != null) {
+            //to make the toolbar transparent
+            //toolbar.getBackground().setAlpha(0);
             setSupportActionBar(toolbar);
             //setSupportActionBar(toolbar);
             //getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_arrow_back);
             //getSupportActionBar().setHomeButtonEnabled(true);
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            toolbar.setNavigationIcon(R.drawable.ic_arrow_back);
+            final Drawable upArrow = getResources().getDrawable(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
+            upArrow.setColorFilter(getResources().getColor(R.color.white), PorterDuff.Mode.SRC_ATOP);
+            getSupportActionBar().setHomeAsUpIndicator(upArrow);
         }
 
     }
