@@ -1,19 +1,24 @@
 package com.sms.meal.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 
 import com.sms.R;
+import com.sms.meal.ui.add.AddMealActivity;
 import com.sms.ui.SlidingTabLayout;
 
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageButton;
 
 /**
  * Created by cchiappini on 08/03/2015.
  */
 public class MainActivity extends ActionBarActivity {
+    private static final int ADD_MEAL_REQUEST = 2;
 
     // Declaring Your View and Variables
 
@@ -21,6 +26,7 @@ public class MainActivity extends ActionBarActivity {
     private ViewPager pager;
     private ViewPagerAdapter adapter;
     private SlidingTabLayout tabs;
+    private ImageButton addButton;
     private final CharSequence titles[]={"Book","Share"};
 
     @Override
@@ -61,7 +67,19 @@ public class MainActivity extends ActionBarActivity {
 
         // Setting the ViewPager For the SlidingTabsLayout
         //tabs.setViewPager(pager);
+        addButton = (ImageButton)findViewById(R.id.add_button);
+        addButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                addNewMeal();
+            }
+        });
 
+    }
+
+    private void addNewMeal() {
+        Intent newMealIntent = new Intent(this, AddMealActivity.class);
+        startActivityForResult(newMealIntent, ADD_MEAL_REQUEST);
     }
 
     @Override

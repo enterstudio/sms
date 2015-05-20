@@ -4,6 +4,7 @@ import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.sms.meal.domainmeal.MyMeal;
 
+import org.junit.Before;
 import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,6 +13,14 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class ParseMealParserTest {
+
+    MealParser<ParseObject> parseMealParser;
+
+    @Before
+    public void setup(){
+        parseMealParser = new ParseMealParser();
+    }
+
     @Test
     public void shouldExtractUnbookedMealsFromListOfObject(){
         List<ParseObject> parseMealList = new ArrayList<>();
@@ -21,10 +30,9 @@ public class ParseMealParserTest {
         parseSecondMeal.put("image", new ParseFile("fileName", new byte[0]));
         parseMealList.add(parseFirstMeal);
         parseMealList.add(parseSecondMeal);
-        MealParser<ParseObject> parseMealParser = new ParseMealParser();
         List<MyMeal> meals = parseMealParser.extractUnbookedMealsFromListOfObject(parseMealList);
-        assertMealHasBeenParser(parseFirstMeal, meals.get(0));
-        assertMealHasBeenParser(parseSecondMeal, meals.get(1));
+        assertMealHasBeenParsedCorrectly(parseFirstMeal, meals.get(0));
+        assertMealHasBeenParsedCorrectly(parseSecondMeal, meals.get(1));
     }
 
     @Test
@@ -32,14 +40,31 @@ public class ParseMealParserTest {
         ParseObject parseFirstMeal = createMealParseObject("idOfFirstMeal", "firstMeal", "firstMealDescription", "firstMealLocation", "firstMealOwner");
         parseFirstMeal.put("image", new ParseFile("fileName", new byte[0]));
 
-        MealParser<ParseObject> parseMealParser = new ParseMealParser();
+
         MyMeal meal = parseMealParser.parseMeal(parseFirstMeal);
-        assertMealHasBeenParser(parseFirstMeal, meal);
+        assertMealHasBeenParsedCorrectly(parseFirstMeal, meal);
     }
 
-    private void assertMealHasBeenParser(ParseObject parseMealObjectExpected, MyMeal mealObjectReturned) {
+    @Test
+    public void shouldParseMealObjectFromMeal(){
+        MyMeal meal = new MyMeal("12345", "name", "description", "location", "owner");
+        meal.setImage(new byte[0]);
+        ParseObject parseObject = parseMealParser.parseObjectMeal(meal);
+        assertEquals(parseObject.get("name"), meal.getName());
+        assertEquals(parseObject.get("description"), meal.getDescription());
+        assertEquals(parseObject.get("owner"), meal.getOwner());
+        assertEquals(parseObject.get("location"), meal.getLocation());
+        assertEquals(parseObject.get("image"), meal.getImage());
+    }
+
+    private void assertMealHasBeenParsedCorrectly(ParseObject parseMealObjectExpected, MyMeal mealObjectReturned) {
         assertEquals(parseMealObjectExpected.getObjectId(), mealObjectReturned.getId());
         assertEquals(parseMealObjectExpected.get("name"), mealObjectReturned.getName());
+        assertEquals(parseMealObjectExpected.get("description"), mealObjectReturned.getDescription());
+        assertEquals(parseMealObjectExpected.get("owner"), mealObjectReturned.getOwner());
+        assertEquals(parseMealObjectExpected.get("location"), mealObjectReturned.getLocation());
+        assertEquals(parseMealObjectExpected.get("image"), mealObjectReturned.getImage());
+
     }
 
     private ParseObject createMealParseObject(String id, String name, String description, String location, String owner) {

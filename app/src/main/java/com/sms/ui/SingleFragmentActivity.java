@@ -4,13 +4,9 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
-import android.support.v7.app.ActionBarActivity;
-import android.support.v7.widget.Toolbar;
-import android.util.Log;
-import android.view.View;
 
 import com.sms.R;
-import com.sms.meal.ui.MealFragment;
+import com.sms.meal.ui.get.MealFragment;
 
 /**
  * Created by cchiappini on 25/11/2014.

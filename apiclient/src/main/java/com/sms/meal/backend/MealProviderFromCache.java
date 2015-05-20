@@ -54,4 +54,9 @@ public class MealProviderFromCache implements MealProvider {
             }
         });
     }
+
+    @Override
+    public void addMeal(MyMeal meal) {
+        //none
+    }
 }

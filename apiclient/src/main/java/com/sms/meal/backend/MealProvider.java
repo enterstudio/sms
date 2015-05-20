@@ -12,4 +12,6 @@ public interface MealProvider {
     void getMeals(RequestCallback<List<MyMeal>> mealsCallback);
 
     void getMeal(RequestCallback<MyMeal> mealCallBack, String id);
+
+    public void addMeal(MyMeal meal);
 }

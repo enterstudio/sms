@@ -18,11 +18,18 @@
             </intent-filter>
         </activity>
         <activity
-                android:name=".meal.ui.MealActivity"
-                android:label="@string/title_activity_display_confirmation">
+        android:name=".meal.ui.get.MealActivity"
+        android:label="@string/title_activity_display_confirmation">
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value="com.sms.meal.ui.MainActivity" />
+        </activity>
+        <activity
+            android:name=".meal.ui.add.AddMealActivity"
+            android:label="@string/add_meal_toolbar_text">
             <meta-data
-                    android:name="android.support.PARENT_ACTIVITY"
-                    android:value="com.sms.meal.ui.MainActivity" />
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.sms.meal.ui.MainActivity" />
         </activity>
         <service android:name="com.parse.PushService" />
 

@@ -14,9 +14,9 @@ import android.widget.TextView;
 
 import com.sms.R;
 import com.sms.ShareMyMealApplication;
-import com.sms.booking.ui.BookingActivity;
 import com.sms.meal.backend.MyMealProvider;
 import com.sms.meal.domainmeal.MyMeal;
+import com.sms.meal.ui.get.MealActivity;
 import com.sms.transport.RequestCallback;
 
 import java.util.ArrayList;
@@ -54,6 +54,7 @@ public class MealListFragment extends ListFragment {
         MyMeal meal = ((MealAdapter) getListAdapter()).getItem(position);
         Intent bookingIntent = new Intent(getActivity(), MealActivity.class);
         bookingIntent.putExtra("mealId", meal.getId());
+        bookingIntent.putExtra("mealName", meal.getName());
         startActivityForResult(bookingIntent, MEAL_BOOKED_REQUEST);
     }
 

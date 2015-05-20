@@ -1,4 +1,4 @@
-package com.sms.meal.ui;
+package com.sms.meal.ui.get;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -106,7 +106,7 @@ public class MealFragment extends Fragment {
             locationTextView.setText(data.getLocation());
             uploadedByStringTextView.setText("Cooked by ");
             uploadedByTextView.setText(data.getOwner());
-            imageView.setImageBitmap(BitmapFactory.decodeByteArray(data.getImage(), 0, data.getImage().length) );
+            imageView.setImageBitmap(BitmapFactory.decodeByteArray(data.getImage(), 0, data.getImage().length));
             bookMealButton.setVisibility(View.VISIBLE);
             captionTitleView.setText(data.getName());
         }

@@ -69,4 +69,10 @@ public class MyMealProvider implements MealProvider{
         }, id);
     }
 
+    @Override
+    public void addMeal(MyMeal meal) {
+        mealProviderFromServer.addMeal( meal);
+    }
+
+
 }

@@ -21,15 +21,10 @@
                 android:id="@+id/imageView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/abc_text_size_body_1_material"
                 android:adjustViewBounds="true"
                 android:scaleType="fitCenter"
                 />
-
-            <View
-                android:layout_width="fill_parent"
-                android:layout_alignBottom="@id/imageView"
-                android:layout_height="30dp"
-                android:background="#80FF5722" />
 
             <TextView
                 android:id="@+id/captionTitleView"
@@ -39,6 +34,7 @@
                 android:layout_centerHorizontal="true"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@color/white"
+                android:shadowColor="@color/material_blue_grey_800"
                 />
 
         </RelativeLayout>

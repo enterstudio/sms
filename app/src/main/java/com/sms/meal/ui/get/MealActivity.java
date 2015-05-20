@@ -1,4 +1,4 @@
-package com.sms.meal.ui;
+package com.sms.meal.ui.get;
 
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
@@ -9,7 +9,6 @@ import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 
 import com.sms.R;
-import com.sms.ui.SingleFragmentActivity;
 
 /**
  * Created by cchiappini on 26/11/2014.
@@ -29,16 +28,20 @@ public class MealActivity extends ActionBarActivity {
             fm.beginTransaction().add(R.id.fragmentContainer, fragment).commit();
         }
 
+        Bundle extras = getIntent().getExtras();
+        if (extras == null) {
+            return;
+        }
+        // get data via the key
+        String mealName = extras.getString("mealName");
+
         toolbar = (Toolbar) findViewById(R.id.meal_toolbar);
-        toolbar.setTitle("");
+        toolbar.setTitle(mealName);
 
         if (toolbar != null) {
             //to make the toolbar transparent
             //toolbar.getBackground().setAlpha(0);
             setSupportActionBar(toolbar);
-            //setSupportActionBar(toolbar);
-            //getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_arrow_back);
-            //getSupportActionBar().setHomeButtonEnabled(true);
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             final Drawable upArrow = getResources().getDrawable(R.drawable.abc_ic_ab_back_mtrl_am_alpha);
             upArrow.setColorFilter(getResources().getColor(R.color.white), PorterDuff.Mode.SRC_ATOP);

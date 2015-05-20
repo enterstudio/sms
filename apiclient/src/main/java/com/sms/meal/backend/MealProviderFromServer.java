@@ -58,4 +58,12 @@ public class MealProviderFromServer implements MealProvider {
         });
     }
 
+    @Override
+    public void addMeal(MyMeal meal) {
+
+        ParseObject parseMeal = mealParser.parseObjectMeal(meal);
+        parseMeal.saveInBackground();
+
+    }
+
 }

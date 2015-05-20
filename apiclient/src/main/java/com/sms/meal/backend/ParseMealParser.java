@@ -40,4 +40,15 @@ public class ParseMealParser implements MealParser<ParseObject> {
         return meal;
     }
 
+    @Override
+    public ParseObject parseObjectMeal(MyMeal meal) {
+        ParseObject parseMeal = new ParseObject("Meal");
+        parseMeal.put("name", meal.getName());
+        parseMeal.put("description", meal.getDescription());
+        parseMeal.put("location", meal.getLocation());
+        parseMeal.put("owner", meal.getOwner());
+        parseMeal.put("image", meal.getImage());
+        return parseMeal;
+    }
+
 }

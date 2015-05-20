@@ -3,6 +3,6 @@
     android:layout_height="wrap_content"
     android:layout_width="match_parent"
     android:background="@color/ColorPrimary"
-    android:elevation="22dp"
+    android:elevation="@dimen/abc_text_size_body_1_material"
     android:titleTextAppearance="@style/TitleActivity"
     xmlns:android="http://schemas.android.com/apk/res/android" />

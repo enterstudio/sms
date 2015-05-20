@@ -1,5 +1,6 @@
 package com.sms.meal.backend;
 
+import com.parse.ParseObject;
 import com.sms.meal.domainmeal.MyMeal;
 
 import java.util.List;
@@ -11,4 +12,6 @@ public interface MealParser<T> {
     List<MyMeal> extractUnbookedMealsFromListOfObject(List<T> list);
 
     MyMeal parseMeal(T meal);
+
+    ParseObject parseObjectMeal(MyMeal meal);
 }
