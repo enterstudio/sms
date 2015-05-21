@@ -1,6 +1,9 @@
 package com.sms.meal.ui;
 
+import android.annotation.TargetApi;
 import android.content.Intent;
+import android.graphics.Outline;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 
@@ -12,6 +15,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewOutlineProvider;
 import android.widget.ImageButton;
 
 /**
@@ -74,6 +78,16 @@ public class MainActivity extends ActionBarActivity {
                 addNewMeal();
             }
         });
+
+        addButton.setOutlineProvider(new ViewOutlineProvider() {
+            @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+            @Override
+            public void getOutline(View view, Outline outline) {
+                int diameter = getResources().getDimensionPixelSize(R.dimen.diameter);
+                outline.setOval(0, 0, diameter, diameter);
+            }
+        });
+        addButton.setClipToOutline(true);
 
     }
 
